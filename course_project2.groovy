@@ -24,15 +24,16 @@ pipeline {
             steps {
                 sh 'docker exec course_project_container sh -c \"apt-get update\"'
                 sh 'docker exec course_project_container sh -c \"apt-get -y install software-properties-common\"'
-                sh 'docker exec course_project_container sh -c \"apt-add-repository ppa:qameta/allure\"'
-                sh 'docker exec course_project_container sh -c \"apt-get install -y allure\"'
-                sh 'docker exec course_project_container sh -c \"apt-get install -y python\"'
-                sh 'docker exec course_project_container sh -c \"apt-get install -y python-pip\"'
+                sh 'docker exec course_project_container sh -c \"apt-get install -y python3.9\"'
+                sh 'docker exec course_project_container sh -c \"apt-get install -y python3-pip\"'
                 sh 'docker exec course_project_container sh -c \"apt-get install -y git\"'
-                sh 'docker exec course_project_container sh -c \"apt-get install -y python-venv\"'
-                sh 'docker exec course_project_container sh -c \"pip install pytest\"'
-//                 sh 'docker exec course_project_container sh -c \"update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.6 1\"'
-//                 sh 'docker exec course_project_container sh -c \"update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 2\"'
+                sh 'docker exec course_project_container sh -c \"apt-get install -y python3.5-venv\"'
+                sh 'docker exec course_project_container sh -c \"pip3 install pytest\"'
+                sh 'docker exec course_project_container sh -c \"apt-add-repository ppa:qameta/allure\"'
+                sh 'docker exec course_project_container sh -c \"apt-get update\"'
+                sh 'docker exec course_project_container sh -c \"apt-get install -y allure\"'
+                sh 'docker exec course_project_container sh -c \"allure --version\"'
+
 
             }
         }
@@ -53,6 +54,7 @@ pipeline {
     }
 }
 
+ pip install --upgrade pip
 
 
         curl -o allure-2.7.0.tgz -Ls https://dl.bintray.com/qameta/generic/io/qameta/allure/allure/2.7.0/allure-2.7.0.tgz
